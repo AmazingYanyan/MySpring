@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--  Controller  -->
+    <bean id="userControllerBean" class="org.yanyan.controller.UserController">
+
+        <!-- 构造注入的方式 -->
+
+        <constructor-arg index="0" ref="userServiceBean"/>
+        <constructor-arg index="1" ref="userServiceBean02"/>
+    </bean>
+
+    <!--  Service  -->
+    <bean id="userServiceBean" class="org.yanyan.service.impl.UserServiceImpl">
+        <constructor-arg index="0" ref="userDaoBean"/>
+    </bean>
+
+    <bean id="userServiceBean02" class="org.yanyan.service.impl.UserServiceImpl02">
+        <constructor-arg index="0" ref="userDaoBean"/>
+    </bean>
+
+    <!--  Dao  -->
+    <bean id="userDaoBean" class="org.yanyan.dao.impl.UserDaoImpl"></bean>
+
+
+</beans>
